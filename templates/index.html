@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content= "width=device-width, initial-scale-1.0">
+	<title>Genre Classifier</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/classifier.css') }}">	
+	<!-- <link rel="stylesheet" type="text/css" href="../static/css/classifier.css"> -->
+</head>
+
+<body>
+	<header id="header"> <h1> <a href="{{ url_for('index')}}">Whats The Genre</a> </h1> </header>
+	
+	<main id="main">	
+		<h3>Web app that classifies songs using the Spotify API</h3>
+		
+		<form name='search' id="search" action="/search" method="post" >
+			<label for="search">Please enter the artist name and song to find its genre</label>
+			<div id= "searchContainer" >
+				<div id="searchInput">
+					<input id="artist" type="search" name='artist' placeholder="Enter the artist name"> 
+					<input id="track" type="search" name='track' placeholder="Enter the song title">
+				</div>
+		  		<button id= "button" type="submit" value="submit">Classify</button>
+	  		</div>
+		</form>
+		
+		<div id="classified">
+			<h2>The song <span class="searched track">{{data.track}}</span> by <span class="searched artist">{{data.artist}}</span> is a <span class="searched genre" ontouchstart="displayPdf()" ontouchend="hidePdf()" onMouseOver="displayPdf()" onMouseOut="hidePdf()">{{data.genre}}</span> song</h2>
+		</div>		
+		
+		<div id="proba_graph">
+			<div id="label">
+				<p style="border-bottom: 2px solid white;">Accuracy:</p>
+				<p>Country:</p>
+				<p>Edm:</p>
+				<p>Latin:</p>
+				<p>Pop:</p>
+				<p>R&B:</p>
+				<p>Rap:</p>
+				<p>Rock:</p>
+			</div>
+			<div id="probability">
+				<div class="container" style="border-bottom: 2px solid white;">
+				  	<div class="genreProba accuracy" style="width:13%;">{{data.accuracy}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba country" style="width:{{data.probability[0]}}%;">{{data.probability[0]}}%</div>
+				</div>
+				<div class="container">
+					<div class="genreProba edm" style="width:{{data.probability[1]}}%;">{{data.probability[1]}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba latin" style="width:{{data.probability[2]}}%;">{{data.probability[2]}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba pop" style="width:{{data.probability[3]}}%;">{{data.probability[3]}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba rb" style="width:{{data.probability[4]}}%;">{{data.probability[4]}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba rap" style="width:{{data.probability[5]}}%;">{{data.probability[5]}}%</div>
+				</div>
+				<div class="container">
+				  <div class="genreProba rock" style="width:{{data.probability[6]}}%;">{{data.probability[6]}}%</div>
+				</div>	
+			</div>
+		</div>
+
+		<div id="audio_and_visuals" align="center">
+			<div id="album_cover">
+				<img src={{data.album_art}} alt="pic" />
+			</div>		
+			<canvas></canvas>
+		</div>
+
+		<div id="mp3" align="center">
+			<audio id="audio" controls="controls"> 
+				<source src = {{data.preview_url|tojson}} type="audio/mpeg" >
+				<a href = {{data.preview_url}} type="audio/mpeg">url to the 30sec track preview</a>
+			</audio>
+		</div>
+		<div id="noAudio">
+			<h3>This track does not have a preview.</h3>
+		</div>
+		<div id="tryAgain">
+			<h3>We cant seem to find the song you entered. Please try again.</h3>
+		</div>
+	
+	</main>
+	<footer>
+		Copyright &copy; 2020 Deanna Thomas<br>
+		<a href = "mailto: deanna20thomas@gmail.com">deanna20thomas@gmail.com</a>
+	</footer>
+	
+	<!-- <script type="text/javascript" scr="../static/js/classifier.js"></script> -->
+	<script type="text/javascript">
+		var data = {{data|tojson}}
+	</script>
+	<script src="{{ url_for('static', filename='js/classifier.js') }}"></script>
+	
+	<!-- <script src="{{ url_for('static', filename='js/visualizer.js') }}"></script> -->
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+* { box-sizing: border-box; }
+html {scroll-behavior: smooth;}
+
+
+body { 
+	background-repeat: no-repeat;
+	color: #ddd;
+	font-family: Arial, Helvetica, or sans-serif;
+	font-size: 70%;
+	width: 100vw;
+	margin: 0px;
+}
+
+#header { 
+	background-color: #FE53BB; 
+	color: #FFFFFF;
+	text-shadow: 1px 1px 1px #ddd;
+	text-align: center;
+	width: 100%; 
+	height: 6vh;
+}
+header a { 
+	color: #FFFFFF; 
+	text-decoration: none; 
+	text-align: center;
+}
+header a:hover { color: #393e46; }
+
+#main {
+	background-color: #222831; 
+	overflow: auto;
+	border-top: 5px solid #ddd;
+	border-bottom: 2px solid #ddd;
+	width: 100%; 
+	height: 94vh;
+	padding-top: 2%;
+}
+
+form { 
+	flex-direction: row;
+  	text-align: center; 
+  	padding-bottom: 2%;
+
+}
+#search label { 
+	justify-content: center; 
+  	margin: 10px;
+}
+#searchContainer { 
+  	display: flex;
+  	flex-direction: row;
+  	justify-content: center; 
+}
+#searchInput { 
+	justify-content: center; 
+}
+#search input { 
+	border: 2px solid #ddd; 
+	box-shadow: 4px 7px 29px 0px rgba(69,69,69,0.3); 
+	padding: 5px;
+	width: 47%;
+	margin: 0 auto;
+}
+input, textarea, select { margin-bottom: .5em; }
+select { padding: 3px; }
+#search button { 
+	height: 29px; 
+	padding: 4px; 
+	background-color: #393e46; color: #ddd;
+	box-shadow: 4px 7px 29px 0px rgba(69,69,69,0.3);
+}
+
+.searched { 
+	color: #FE53BB;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #ddd;
+}
+.genre:hover{
+	color: #FFFFFF;
+}
+#proba_graph { 
+	display: flex;
+  	flex-flow: row;
+	align-items: center;
+	width: 60vw;
+  	height: 32.5%;
+  	margin: 0 auto;
+  	position: absolute;
+  	z-index: 2;
+  	border: 2px solid #ddd;
+  	display: none;
+}
+#label {
+	width: 25%;
+	height: 100%;
+	padding-left: 1%;
+	float: left;
+	margin: 0 auto;
+	color: #FFFFFF;
+	background-color: #393e46;
+}
+#label p{ 
+	margin: 0px;
+	padding-top: 7%; 
+	height: 12.5%; 
+}
+
+#probability{
+	width: 75%; 
+	height: 100%;
+	display: flex;
+  	flex-flow: column;
+  	float: right;
+	background-color: #222831;	
+}
+.container {
+  width: 100%;
+  height: 12.5%;
+  background-color: #393e46;
+}
+.genreProba {
+  text-align: right;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  height: 100%;
+  color: #FFFFFF;
+}
+.pop {background-color: #FE53BB;}
+.rock {background-color: #6e0dd0;}
+.latin {background-color: #FC6E22;}
+.rap {background-color: #ce1127;}
+.edm {background-color: dimgrey;} 
+.rb {background-color: #00218A;}
+.country {background-color: olive;}
+
+#audio_and_visuals { 
+	flex-wrap: wrap;
+	align-items: center;
+	width: 70vw;
+  	height: 70%;
+  	display: flex;
+  	margin: 0 auto;
+  	padding: 0px;
+}
+#album_cover {
+	width: 100%;
+	height: 50%;
+	margin: 0 auto;
+	box-shadow: 4px 7px 29px 0px rgba(69,69,69,0.3);
+}
+img {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+canvas {
+	width: 100%;
+	height: 50%;
+	box-shadow: 4px 7px 29px 0px rgba(69,69,69,0.3);
+}
+
+
+#mp3 {
+	display: block;
+ 	margin: 0 auto;
+ 	padding: 15px;
+ 	padding-top: 2%;
+}
+#audio{
+	margin: 0 auto;
+	box-shadow: 4px 7px 29px 0px rgba(69,69,69,0.3);
+}
+
+#noAudio {
+	text-align: center;
+	display: none;
+	padding: 50px 50px 50px 50px;
+}
+#tryAgain {
+	text-align: center;
+	display: none;
+	padding: 50px 50px 50px 50px;
+}
+
+h1 {
+	color: #FFFFFF; 
+ 	margin-bottom: 0; margin-top: 0;
+ 	font-family: Georgia, "Times New Roman", or serif;
+}
+h2 {
+ 	color: #FFFFFF; 
+ 	font-family: Georgia, "Times New Roman", or serif;
+ 	text-align: center;
+}
+h3 {
+	color: #FFFFFF;
+	font-family: Georgia, "Times New Roman", or serif;
+	text-align: center;
+}
+
+
+/* Tablet View */
+@media (min-width: 600px){
+	h2 {grid-row: 1 / 2; grid-column: 1 / 5;}
+	header { grid-row: 1 / 2; grid-column: 1 / 5; height: 10vh;}
+	body { font-size: 100%; }
+	main { grid-row: 2 / 6; grid-column: 1 / 5; height: 90vh;}
+	#label{width: 20%;}
+	#probability{width: 80%;}
+	#album_cover {
+		width: 33%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	canvas {
+		width: 67%;
+		height: 100%;
+	}
+	#audio_and_visuals { 
+		width: 80vw;
+	  	height: 40vh;
+	}
+}
+
+/* Desktop View */
+@media (min-width: 1024px){
+	body {
+		display: grid;
+		grid-template-columns: auto; 
+		grid-template-rows: auto;
+	}
+	#header { grid-row: 1 / 2; grid-column: 1 / 4; }
+	main { grid-row: 2 / 6; grid-column: 1 / 4;}
+	#proba_graph { 
+		width: 50vw;
+		margin-left: 38%;
+	}
+	#label{width: 15%;}
+	#probability{width: 85%;}
+	#audio_and_visuals { 
+		width: 70vw;
+	  	height: 50vh;
+	}
+	#album_cover {
+		width: 33%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		margin: 0 auto;
+	}
+	canvas {
+		width: 67%;
+		height: 100%;
+	}
+}
